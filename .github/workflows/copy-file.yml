@@ -1,0 +1,44 @@
+name: Copy File from One Branch to Another
+
+on:
+  push:
+    branches:
+      - main  # You can change this to the source branch name that triggers the action
+
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Checkout the source branch (e.g., main)
+      - name: Checkout source branch
+        uses: actions/checkout@v3
+        with:
+          ref: main   # Replace with the branch name where the file is coming from
+
+      # Set up Git to configure user details
+      - name: Set up Git
+        run: |
+          git config user.name "amanBhathal"
+          git config user.email "amandeep.bhathal@gov.bc.ca"
+          
+      # Create a new branch (destination branch)
+      - name: Create destination branch
+        run: |
+          git checkout -b welcome-workflow  # Replace with the destination branch name
+
+      # Copy the file to the destination branch
+      - name: Copy file to target branch
+        run: |
+          cp /testtable.json /test/testtable.json # Specify the correct paths
+
+      # Stage and commit the changes
+      - name: Commit the changes
+        run: |
+          git add .
+          git commit -m "Copy file from source branch to target branch"
+
+      # Push the changes to the target branch
+      - name: Push changes to target branch
+        run: |
+          git push origin welcome-workflow  # Replace with the destination branch name
