@@ -30,7 +30,7 @@ jobs:
       # Copy the file to the destination branch
       - name: Copy file to target branch
         run: |
-          cp /testtable.json /test/testtable.json # Specify the correct paths
+          cp ./testtable.json ./test/testtable.json # Specify the correct paths
 
       # Stage and commit the changes
       - name: Commit the changes
