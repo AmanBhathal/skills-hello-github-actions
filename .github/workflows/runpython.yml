@@ -27,7 +27,7 @@ jobs:
         #pip install -r requirements.txt    # Install dependencies (if you have a requirements.txt)
 
     - name: Run Python script
-      run: python /python/my_script.py  # Replace 'your_script.py' with the name of your Python script
+      run: python test.py  # Replace 'your_script.py' with the name of your Python script
 
     - name: Upload results (optional)
       if: success()  # Upload results if the script runs successfully
