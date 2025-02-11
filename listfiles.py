@@ -35,7 +35,7 @@ s3_client = boto3.client(
 )
 
 #bucket = os.getenv('AWS_S3_BUCKET')
-bucket = tneelb
+bucket = 'tneelb'
 
 # placeholder list for the filenames
 filenames = []
