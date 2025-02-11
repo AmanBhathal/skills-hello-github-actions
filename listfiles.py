@@ -54,15 +54,15 @@ def get_filenames(s3_client):
 list_file_names = get_filenames(s3_client)
 
 # name the text file that is saved to your output folder
-outputname = f"{bucket}_filenames.txt"
+#outputname = f"{bucket}_filenames.txt"
 
 
 # write the list of filenames to a text file
-def write_list(list=[]):
-    with open(r"C:/Git_Repo/Output/" + outputname, "w") as f: # change the folder path to suit your needs
-        for line in list:
-            f.write(line)
-            f.write("\n")
+# def write_list(list=[]):
+ #   with open(r"C:/skills-hello-github-actions/Output/" + outputname, "w") as f: # change the folder path to suit your needs
+ #       for line in list:
+ #           f.write(line)
+ #           f.write("\n")
 
 
-write_list(list_file_names)
+#write_list(list_file_names)
