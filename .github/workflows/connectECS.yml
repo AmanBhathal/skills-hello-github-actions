@@ -1,0 +1,28 @@
+name: Connect to Dell ECS
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main  # Trigger when changes are pushed to the main branch
+
+jobs:
+  ecs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up AWS CLI with ECS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: nr-bcwc-env
+        aws-secret-access-key: mvEJNlzgkf8H/H6yQuOc9HtL5QP8NUeKp35MFJlz
+        aws-region: ca-central-1  # Specify your region; it can be any region because you're using ECS with S3 compatibility
+        # Optional: ECS Endpoint URL (specific to Dell ECS)
+        aws-endpoint-url: https://nrs.objectstore.gov.bc.ca:443
+
+    - name: Interact with Dell ECS (e.g., list objects in ECS bucket)
+      run: |
+        aws s3 ls s3://tneelb --endpoint-url https://nrs.objectstore.gov.bc.ca:443 --no-verify-ssl
