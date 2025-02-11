@@ -39,30 +39,23 @@ bucket = 'tneelb'
 
 # placeholder list for the filenames
 filenames = []
-
-
+bucket_name = 'tneelb'  
+local_file_path = 'folder/'
 # get a list of bucket file names
 def get_filenames(s3_client):
     result = s3_client.list_objects_v2(Bucket=bucket)
     for item in result["Contents"]:
         files = item["Key"]
         print(files)
+        s3.download_file(bucket,item["Key"], local_file_path)
         filenames.append(files)
+        print(f"File downloaded successfully from S3 bucket '{bucket_name}' to '{local_file_path}'")
+
+
     return filenames
 
 
 list_file_names = get_filenames(s3_client)
 
-# name the text file that is saved to your output folder
-#outputname = f"{bucket}_filenames.txt"
 
 
-# write the list of filenames to a text file
-# def write_list(list=[]):
- #   with open(r"C:/skills-hello-github-actions/Output/" + outputname, "w") as f: # change the folder path to suit your needs
- #       for line in list:
- #           f.write(line)
- #           f.write("\n")
-
-
-#write_list(list_file_names)
