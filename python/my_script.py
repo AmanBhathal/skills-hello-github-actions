@@ -1,6 +1,7 @@
 import json
 import sys
 
+
 def excel_to_json(excel_file, json_file):
     # Read the Excel file
     df = pd.read_excel(excel_file, sheet_name=None)  # sheet_name=None to load all sheets
