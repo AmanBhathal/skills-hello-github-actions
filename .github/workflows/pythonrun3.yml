@@ -39,4 +39,8 @@ jobs:
 
     - name: Download file from S3
       run: |
-        aws s3 cp s3://tneelb/BCWC/msw_in_region_disposal.xlsx folder/
+        git config --global user.name "AmanBhathal"
+        git config --global user.email "amandeep.bhathal@gov.bc.ca"
+        git add /folder/msw_in_region_disposal.xlsx  # Add the downloaded file (path relative to the repo root)
+        git commit -m "Add file from S3 to GitHub repo"
+        git push origin main  # Push the changes to the repo
