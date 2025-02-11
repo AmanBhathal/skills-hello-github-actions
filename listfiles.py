@@ -47,7 +47,7 @@ def get_filenames(s3_client):
     for item in result["Contents"]:
         files = item["Key"]
         print(files)
-        s3.download_file(bucket,item["Key"], local_file_path)
+        s3_client.download_file(bucket,item["Key"],local_file_path)
         filenames.append(files)
         print(f"File downloaded successfully from S3 bucket '{bucket_name}' to '{local_file_path}'")
 
