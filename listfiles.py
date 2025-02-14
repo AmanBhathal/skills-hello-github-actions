@@ -1,22 +1,3 @@
-# -------------------------------------------------------------------------------
-# Name:        list_bucket_files.py
-# Purpose:     the purpose of the script is to scan an object storage bucket for 
-#              filenames and write them (if any) to a text document for review :
-#              1.) you will need an .env file for key/value pairs and a constant.py file to successfully run this script
-#              2.) connect to S3 Object Storage bucket
-#              3.) read object keys to list
-#              4.) iterate over list, write filenames to text file
-#
-# Author:      HHAY, PPLATTEN
-#
-# Created:     2023-08-09
-# Copyright:   (c) OPTIMIZATION TEAM 2023
-# Licence:     mine
-#
-#
-# usage: 'list_bucket_files.py
-# example: 'list_bucket_files.py'
-# -------------------------------------------------------------------------------
 
 # import python libraries
 import boto3
