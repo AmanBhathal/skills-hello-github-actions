@@ -35,7 +35,7 @@ jobs:
            # Run the script to convert Excel to JSON
       - name: Convert Excel to JSON
         run: |
-          python script/convert.py folder/msw_in_region_disposal.xlsx folder/msw_in_region_disposal.json
+          python test.py folder/msw_in_region_disposal.xlsx folder/msw_in_region_disposal.json
 
       # Optionally, you can commit the output JSON file back to the repository
       - name: Commit and push JSON output
