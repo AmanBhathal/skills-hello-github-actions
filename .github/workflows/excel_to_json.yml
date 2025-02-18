@@ -1,4 +1,4 @@
-name: Convert Excel to JSON
+name: Convert Excel to JSON 2
 
 on:
   workflow_dispatch:
