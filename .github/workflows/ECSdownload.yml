@@ -42,6 +42,6 @@ jobs:
       run: |
         git config --global user.name "AmanBhathal"
         git config --global user.email "amandeep.bhathal@gov.bc.ca"
-        git add msw_in_region_disposal.xlsx  # Add the downloaded file (path relative to the repo root)
+        git add /folder/msw_in_region_disposal.xlsx  # Add the downloaded file (path relative to the repo root)
         git commit -m "Add downloaded file from Dell ECS"
         git push origin main  # Push to the main branch
