@@ -4,7 +4,7 @@ from collections import defaultdict
 import os
 
 # Define paths
-input_file = "folder/msw_in_region_disposal.xlsx"
+input_file = "msw_in_region_disposal.xlsx"
 output_file = "folder/grouped_waste_data.json"
 
 # Load the Excel file
