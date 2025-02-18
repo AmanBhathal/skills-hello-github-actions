@@ -26,7 +26,7 @@ files_to_download = [
 # Download the file from Dell ECS
 for OBJECT_KEY in files_to_download:
     try:
-        s3_client.download_file(BUCKET_NAME, OBJECT_KEY, LOCAL_FILE_PATH)
+        s3_client.download_file(BUCKET_NAME, OBJECT_KEY, os.path.join(LOCAL_FILE_PATH, OBJECT_KEY))
         print(f"Downloaded {OBJECT_KEY} from Dell ECS to {LOCAL_FILE_PATH}.")
     except Exception as e:
         print(f"Error downloading file: {e}")
