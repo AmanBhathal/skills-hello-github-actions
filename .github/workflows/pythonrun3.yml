@@ -1,46 +1,47 @@
-name: Run Python Script
+name: Convert Excel to JSON
 
 on:
   workflow_dispatch:
   push:
     branches:
       - main  # Trigger on push to the main branch
+    paths:
+      - "folder/msw_in_region_disposal.xlsx"  # Specify the path to your Excel file
   pull_request:
     branches:
-      - main  # Trigger on pull request to the main branch
-
+      - main
 jobs:
-  run-python:
-    runs-on: ubuntu-latest  # Use Ubuntu as the runner
+  convert:
+    runs-on: ubuntu-latest  # You can also choose windows-latest or macos-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.8'  # Specify the Python version you want to use
+      # Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'  # You can adjust the version ifneeded
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install boto3 constants
+     # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install wheel
+          pip install pandas openpyxl
 
-    - name: Run Python script
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-        
-      run: |
-        python listfiles.py  # Replace with the name of your Python script
+           # Run the script to convert Excel to JSON
+      - name: Convert Excel to JSON
+        run: |
+          python script/convert.py folder/msw_in_region_disposal.xlsx folder/msw_in_region_disposal.json
 
-    - name: Download file from S3
-      run: |
-        git config --global user.name "AmanBhathal"
-        git config --global user.email "amandeep.bhathal@gov.bc.ca"
-        git add /folder/msw_in_region_disposal.xlsx  # Add the downloaded file (path relative to the repo root)
-        git commit -m "Add file from S3 to GitHub repo"
-        git push origin main  # Push the changes to the repo
+      # Optionally, you can commit the output JSON file back to the repository
+      - name: Commit and push JSON output
+        run: |
+          git config --global user.name 'AmanBhathal'
+          git config --global user.email 'amandeep.bhathal@gov.bc.ca'
+          git add export/output.json
+          git commit -m "Update JSON file"
+          git push
