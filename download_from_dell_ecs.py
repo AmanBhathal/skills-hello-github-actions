@@ -6,8 +6,8 @@ DELL_ECS_ACCESS_KEY = os.getenv('AWS_ACCESS_KEY_ID')
 DELL_ECS_SECRET_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 DELL_ECS_ENDPOINT = 'https://nrs.objectstore.gov.bc.ca'
 BUCKET_NAME = 'tneelb'  # Replace with your bucket name
-OBJECT_KEY = 'msw_in_region_disposal.xlsx'  # Replace with the object you want to download
-LOCAL_FILE_PATH = 'msw_in_region_disposal.xlsx'  # Local file path for saving the downloaded file
+OBJECT_KEY = 'BCWC'  # Replace with the object you want to download
+LOCAL_FILE_PATH = 'BCWC'  # Local file path for saving the downloaded file
 
 # Initialize the S3 client with Dell ECS endpoint
 s3_client = boto3.client('s3', 
